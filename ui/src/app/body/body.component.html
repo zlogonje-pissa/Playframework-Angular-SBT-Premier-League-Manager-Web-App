@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+        <h2>
+          Premier League Table
+        </h2>
+        <table class="tableizer-table" id="clubsTable">
+          <thead>
+          <tr class="tableizer-firstrow">
+            <th>#</th>
+            <th>Club</th>
+            <th>Location</th>
+            <th class="statcell" (click)="sortTable('clubsTable',2)">W</th>
+            <th class="statcell" (click)="sortTable('clubsTable',3)">D</th>
+            <th class="statcell" (click)="sortTable('clubsTable',4)">L</th>
+            <th class="statcell" (click)="sortTable('clubsTable',5)">GF</th>
+            <th class="statcell" (click)="sortTable('clubsTable',6)">GA</th>
+            <th class="statcell" (click)="sortTable('clubsTable',7)">GD</th>
+            <th class="statcell" (click)="sortTable('clubsTable',8)">Points</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of newClubList">
+            <td>
+              {{item.clubName}}
+            </td>
+            <td>
+              {{item.location}}
+            </td>
+            <td>
+              {{item.wins}}
+            </td>
+            <td>
+              {{item.draws}}
+            </td>
+            <td>
+              {{item.defeats}}
+            </td>
+            <td>
+              {{item.goalsFor}}
+            </td>
+            <td>
+              {{item.goalsAgainst}}
+            </td>
+            <td>
+              {{item.goalsDifference}}
+            </td>
+            <td>
+              {{item.pointsThisSeason}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-12 grey">
+      <div class="box side-bar">
+        <div class="row">
+          <div class="col-4">
+            <div class="box">
+              <button class="button" (click)="generateMatch()">
+                Generate Random Match
+              </button>
+
+              <button class="button" (click)="saveMatches()">
+                Save The Random Matches
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="box">
+        <h2>
+          Football Matches
+        </h2>
+        <table class="tableizer-table"  id="matchesTable">
+          <thead>
+          <tr class="tableizer-firstrow">
+            <th>#</th>
+            <th style="cursor: pointer" (click)="sortTableByDate('matchesTable',0)">Match Date</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th class="statcell"  (click)="sortTable('matchesTable',3)">Home Team Goals</th>
+            <th class="statcell"  (click)="sortTable('matchesTable',4)">Away Team Goals</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let item of matchList">
+            <td>
+              {{format(item.matchDate) | date:'d/MMMM/YYYY'}}
+            </td>
+            <td>
+              {{item.homeTeam.clubName}}
+            </td>
+            <td>
+              {{item.awayTeam.clubName}}
+            </td>
+            <td>
+              {{item.team1_goals}}
+            </td>
+            <td>
+              {{item.team2_goals}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
